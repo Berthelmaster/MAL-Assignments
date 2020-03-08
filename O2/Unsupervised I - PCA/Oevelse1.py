@@ -18,7 +18,7 @@ digits = load_digits()
 
 print(digits.keys())
 
-# Plot images of dataset
+# Plot numbers of dataset
 
 for number in range(10):
     plt.matshow(digits.images[number])
@@ -49,6 +49,7 @@ for number in range(10):
     ax.scatter(x, y, c=colors[number], label=number, alpha=0.4)
 
 ax.legend()
+ax.grid(True)
 ax.set_title('PCA Handwritten digits 0-9')
 plt.show()
 
