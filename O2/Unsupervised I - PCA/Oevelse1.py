@@ -18,8 +18,7 @@ digits = load_digits()
 
 print(digits.keys())
 
-# Plot image 0-2 of dataset
-plt.gray()
+# Plot images of dataset
 
 for number in range(10):
     plt.matshow(digits.images[number])
@@ -51,7 +50,6 @@ for number in range(10):
 
 ax.legend()
 ax.set_title('PCA Handwritten digits 0-9')
-ax.grid(True)
 plt.show()
 
 #PCA dimensionsreduktion
