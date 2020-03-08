@@ -16,12 +16,13 @@ from random import randint
 
 digits = load_digits()
 
+print(digits.keys())
+
 # Plot image 0-2 of dataset
 plt.gray()
 
-plt.matshow(digits.images[0])
-plt.matshow(digits.images[1])
-plt.matshow(digits.images[2])
+for number in range(10):
+    plt.matshow(digits.images[number])
 
 #END OF A
 
@@ -30,7 +31,7 @@ plt.matshow(digits.images[2])
 # Scandizes dataset along any axis
 X_data = scale(digits.data)
 
-y_nums = digits.target
+y_data = digits.target
 
 pca = PCA(n_components=2)
 X_pca_data = pca.fit(X_data.T)
@@ -43,13 +44,13 @@ for i in range(10):
 fig, ax = plt.subplots()
 
 for number in range(10):
-    Arr = np.where(y_nums == number)
+    Arr = np.where(y_data == number)
     x = X_pca_data.components_[0,Arr[0]]
     y = X_pca_data.components_[1,Arr[0]]
     ax.scatter(x, y, c=colors[number], label=number, alpha=0.4)
 
 ax.legend()
-ax.set_title('Handwritten digits 0-9"')
+ax.set_title('PCA Handwritten digits 0-9')
 ax.grid(True)
 plt.show()
 
