@@ -9,12 +9,51 @@ import numpy as np
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_digits
+from sklearn.preprocessing import scale
+from random import randint
+
+#Start of A
 
 digits = load_digits()
-print(digits)
 
+# Plot image 0-2 of dataset
+plt.gray()
 
 plt.matshow(digits.images[0])
 plt.matshow(digits.images[1])
 plt.matshow(digits.images[2])
 
+#END OF A
+
+#START OF B
+
+# Scandizes dataset along any axis
+X_data = scale(digits.data)
+
+y_nums = digits.target
+
+pca = PCA(n_components=2)
+X_pca_data = pca.fit(X_data.T)
+
+# From https://stackoverflow.com/questions/7827530/array-of-colors-in-python
+colors = []
+for i in range(10):
+    colors.append('#%06X' % randint(0, 0xFFFFFF))
+
+fig, ax = plt.subplots()
+
+for number in range(10):
+    Arr = np.where(y_nums == number)
+    x = X_pca_data.components_[0,Arr[0]]
+    y = X_pca_data.components_[1,Arr[0]]
+    ax.scatter(x, y, c=colors[number], label=number, alpha=0.4)
+
+ax.legend()
+ax.set_title('Handwritten digits 0-9"')
+ax.grid(True)
+plt.show()
+
+#PCA dimensionsreduktion
+
+
+#END OF B
