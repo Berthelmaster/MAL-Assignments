@@ -2,7 +2,7 @@
 """
 Created on Sun Mar  8 17:35:03 2020
 
-@author: berth
+@author: Thomas Berthel
 """
 
 import numpy as np
@@ -12,6 +12,8 @@ from sklearn.datasets import load_digits
 from sklearn.preprocessing import scale
 from random import randint
 
+# Øvelse 1
+
 #Start of A
 
 digits = load_digits()
@@ -19,6 +21,8 @@ digits = load_digits()
 print(digits.keys())
 
 # Plot numbers of dataset
+
+plt.gray()
 
 for number in range(10):
     plt.matshow(digits.images[number])
