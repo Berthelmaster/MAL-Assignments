@@ -66,4 +66,27 @@ plt.title("Pure data from digits.images")
 #Efter kompression (1797,36)
 
 #End of C
+
+#Start of D
+
+explainedvarianceplot = np.cumsum(explainedvariance) / np.sum(explainedvariance)
+meanValue = explainedvarianceplot.mean()
+
+# Aflæst til ca 25 for y = 0.825
+print(meanValue)
+
+n_componentsmV = 25
+
+pcaD = PCA(n_components=n_componentsmV)
+
+digits_transform_D = pcaD.fit_transform(scale(X_digits))
+
+digits_reconstructor_D = pcaD.inverse_transform(digits_transform_D)
+
+digit_recon_D = digits_reconstructor_D[1,:].reshape(newshape)
+
+plt.imshow(digit_recon_D)
+plt.title("digits reconstruction n_component = 25")
+
+#End of D
     
